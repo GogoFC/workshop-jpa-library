@@ -3,28 +3,24 @@ package se.lexicon.workshoplibrary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import se.lexicon.workshoplibrary.dao.AppUserDao;
-import se.lexicon.workshoplibrary.entity.AppUser;
 import se.lexicon.workshoplibrary.entity.Book;
 import se.lexicon.workshoplibrary.repository.BookDAO;
-
+/*
 @Component
-public class MyCommandLineRunner implements CommandLineRunner {
+public class MyCommandLineRunnerRepository implements CommandLineRunner {
+
+    private BookDAO bookDAO;
 
     @Autowired
-    AppUserDao appUserDao;
+    public MyCommandLineRunnerRepository(BookDAO bookDAO){
+        this.bookDAO = bookDAO;
+    }
 
     @Override
     public void run(String... args) throws Exception {
-
-        AppUser user3 = new AppUser();
-        user3.setUsername("user3");
-        user3.setPassword("password");
-
-        appUserDao.create(user3);
-
-
-
-
+        Book book4 = new Book();
+        book4 = bookDAO.save(book4);
+        System.out.println(book4);
     }
 }
+*/
