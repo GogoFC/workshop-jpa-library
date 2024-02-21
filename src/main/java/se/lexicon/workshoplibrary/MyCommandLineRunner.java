@@ -13,17 +13,16 @@ import se.lexicon.workshoplibrary.repository.BookRepository;
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
 
-    @Autowired
     AppUserDao appUserDao;
-    @Autowired
     BookRepository bookRepository;
-
-    @Autowired
     BookLoanRepository bookLoanRepository;
 
-
-
-
+    @Autowired
+    public MyCommandLineRunner(AppUserDao appUserDao, BookRepository bookRepository, BookLoanRepository bookLoanRepository) {
+        this.appUserDao = appUserDao;
+        this.bookRepository = bookRepository;
+        this.bookLoanRepository = bookLoanRepository;
+    }
 
     @Override
     public void run(String... args) throws Exception {
