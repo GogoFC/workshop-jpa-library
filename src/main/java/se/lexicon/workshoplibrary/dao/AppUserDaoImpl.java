@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import se.lexicon.workshoplibrary.entity.AppUser;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Repository
 public class AppUserDaoImpl implements AppUserDao{
@@ -25,13 +26,15 @@ public class AppUserDaoImpl implements AppUserDao{
     }
 
     @Override
-    public AppUser findById(int id) {
-        return null;
+    public Optional<AppUser> findById(int id) {
+        AppUser appUser = entityManager.find(AppUser.class, id);
+        return Optional.ofNullable(appUser);
     }
 
     @Override
     public Collection<AppUser> findAll() {
-        return null;
+        return entityManager.createQuery("SELECT a from AppUser a", AppUser.class)
+                .getResultList();
     }
 
     @Override

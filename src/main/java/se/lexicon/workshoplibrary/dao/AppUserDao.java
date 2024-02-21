@@ -3,10 +3,11 @@ package se.lexicon.workshoplibrary.dao;
 import se.lexicon.workshoplibrary.entity.AppUser;
 
 import java.util.Collection;
+import java.util.Optional;
 
 public interface AppUserDao {
 
-    AppUser findById(int id);
+    Optional<AppUser> findById(int id);
 
     Collection<AppUser> findAll();
 
