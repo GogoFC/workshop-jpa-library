@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import se.lexicon.workshoplibrary.entity.BookLoan;
 
 @Repository
-public interface BookLoanDAO extends CrudRepository<BookLoan, Integer> {
+public interface BookLoanRepository extends CrudRepository<BookLoan, Integer> {
 }

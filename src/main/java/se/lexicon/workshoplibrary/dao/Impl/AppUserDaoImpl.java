@@ -1,16 +1,17 @@
-package se.lexicon.workshoplibrary.dao;
+package se.lexicon.workshoplibrary.dao.Impl;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+import se.lexicon.workshoplibrary.dao.AppUserDao;
 import se.lexicon.workshoplibrary.entity.AppUser;
 
 import java.util.Collection;
 import java.util.Optional;
 
 @Repository
-public class AppUserDaoImpl implements AppUserDao{
+public class AppUserDaoImpl implements AppUserDao {
 
     @PersistenceContext
     private EntityManager entityManager;

@@ -1,10 +1,11 @@
-package se.lexicon.workshoplibrary.dao;
+package se.lexicon.workshoplibrary.dao.Impl;
 
+import se.lexicon.workshoplibrary.dao.DetailsDao;
 import se.lexicon.workshoplibrary.entity.Details;
 
 import java.util.Collection;
 
-public class DetailsDaoImpl implements DetailsDao{
+public class DetailsDaoImpl implements DetailsDao {
 
     @Override
     public Details findById(int id) {
