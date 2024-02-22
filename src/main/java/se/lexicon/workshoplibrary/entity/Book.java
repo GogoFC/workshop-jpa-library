@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @NoArgsConstructor
 @Entity
@@ -27,6 +29,11 @@ public class Book {
     @Setter
     @Column
     private int maxLoanDays = 7;
+
+    @Setter
+    @ManyToMany
+    @JoinColumn(name = "author_id")
+    private Set<Author> authors;
 
 
     public Book(String isbn, String title) {

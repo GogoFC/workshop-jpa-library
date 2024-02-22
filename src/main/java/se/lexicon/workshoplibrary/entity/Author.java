@@ -1,9 +1,6 @@
 package se.lexicon.workshoplibrary.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import javax.swing.*;
@@ -26,6 +23,7 @@ public class Author {
     @Setter
     private String lastName;
     @Setter
+    @ManyToMany(mappedBy = "")
     private Set<Book> writtenBooks;
 
 
