@@ -38,7 +38,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         this.bookRepository = bookRepository;
         this.bookLoanRepository = bookLoanRepository;
     }
-    
+
      */
 
     @Override
@@ -64,6 +64,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         Author jackie = new Author();
         jackie.setFirstName("Jackie");
+        jackie.setLastName("Ma");
 
         authorRepository.save(jackie);
 
