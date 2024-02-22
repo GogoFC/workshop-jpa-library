@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import se.lexicon.workshoplibrary.dao.AppUserDao;
+import se.lexicon.workshoplibrary.dao.AuthorDAO;
 import se.lexicon.workshoplibrary.entity.AppUser;
 import se.lexicon.workshoplibrary.entity.Book;
 import se.lexicon.workshoplibrary.entity.BookLoan;
@@ -16,6 +17,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
     AppUserDao appUserDao;
     BookRepository bookRepository;
     BookLoanRepository bookLoanRepository;
+
 
     @Autowired
     public MyCommandLineRunner(AppUserDao appUserDao, BookRepository bookRepository, BookLoanRepository bookLoanRepository) {
@@ -43,6 +45,10 @@ public class MyCommandLineRunner implements CommandLineRunner {
         BookLoan bookLoan = new BookLoan(user3, book1);
 //        BookLoan
         bookLoanRepository.save(bookLoan);
+
+
+
+
 
 
     }
