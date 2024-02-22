@@ -22,12 +22,24 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
     AuthorRepository authorRepository;
 
+
+    @Autowired
+    public MyCommandLineRunner(AppUserDao appUserDao, BookRepository bookRepository, BookLoanRepository bookLoanRepository, AuthorRepository authorRepository) {
+        this.appUserDao = appUserDao;
+        this.bookRepository = bookRepository;
+        this.bookLoanRepository = bookLoanRepository;
+        this.authorRepository = authorRepository;
+    }
+
+    /*
     @Autowired
     public MyCommandLineRunner(AppUserDao appUserDao, BookRepository bookRepository, BookLoanRepository bookLoanRepository) {
         this.appUserDao = appUserDao;
         this.bookRepository = bookRepository;
         this.bookLoanRepository = bookLoanRepository;
     }
+    
+     */
 
     @Override
     public void run(String... args) throws Exception {
@@ -48,6 +60,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
         BookLoan bookLoan = new BookLoan(user3, book1);
 //        BookLoan
         bookLoanRepository.save(bookLoan);
+
 
         Author jackie = new Author();
         jackie.setFirstName("Jackie");
