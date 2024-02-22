@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @ToString
@@ -30,5 +31,16 @@ public class AppUser {
     @OneToOne
     @JoinColumn(name = "details_id")
     private Details details;
+
+    @OneToMany(mappedBy = "borrower")
+    private List<BookLoan> loans;
+/*
+    public void addBookLoan (BookLoan bookLoan) {
+        loans.add(bookLoan);
+        bookLoan.g
+    }
+    
+ */
+
 
 }
