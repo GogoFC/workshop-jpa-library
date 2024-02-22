@@ -26,9 +26,7 @@ public class Author {
     @ManyToMany
     @JoinTable(name = "author_books_rel",
             joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id"),
-            foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT),
-            inverseForeignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     private Set<Book> writtenBooks;
 
     public void addWrittenBooks(Book book) {
