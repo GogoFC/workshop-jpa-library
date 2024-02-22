@@ -6,8 +6,10 @@ import org.springframework.stereotype.Component;
 import se.lexicon.workshoplibrary.dao.AppUserDao;
 import se.lexicon.workshoplibrary.dao.AuthorDAO;
 import se.lexicon.workshoplibrary.entity.AppUser;
+import se.lexicon.workshoplibrary.entity.Author;
 import se.lexicon.workshoplibrary.entity.Book;
 import se.lexicon.workshoplibrary.entity.BookLoan;
+import se.lexicon.workshoplibrary.repository.AuthorRepository;
 import se.lexicon.workshoplibrary.repository.BookLoanRepository;
 import se.lexicon.workshoplibrary.repository.BookRepository;
 
@@ -18,6 +20,7 @@ public class MyCommandLineRunner implements CommandLineRunner {
     BookRepository bookRepository;
     BookLoanRepository bookLoanRepository;
 
+    AuthorRepository authorRepository;
 
     @Autowired
     public MyCommandLineRunner(AppUserDao appUserDao, BookRepository bookRepository, BookLoanRepository bookLoanRepository) {
@@ -46,6 +49,10 @@ public class MyCommandLineRunner implements CommandLineRunner {
 //        BookLoan
         bookLoanRepository.save(bookLoan);
 
+        Author jackie = new Author();
+        jackie.setFirstName("Jackie");
+
+        authorRepository.save(jackie);
 
 
 
