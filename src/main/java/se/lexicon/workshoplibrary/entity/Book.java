@@ -31,13 +31,22 @@ public class Book {
     private int maxLoanDays = 7;
 
     @Setter
-    @ManyToMany
-    @JoinColumn(name = "author_id")
+    @ManyToMany(mappedBy = "writtenBooks")
     private Set<Author> authors;
 
 
     public Book(String isbn, String title) {
         this.isbn = isbn;
         this.title = title;
+    }
+
+    public void addAuthor(Author author) {
+        authors.add(author);
+        author.getWrittenBooks().add(this);
+    }
+
+    public void removeAuthor(Author author) {
+        author.getWrittenBooks().remove(this);
+        authors.remove(author);
     }
 }

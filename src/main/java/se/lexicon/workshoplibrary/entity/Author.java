@@ -23,8 +23,21 @@ public class Author {
     @Setter
     private String lastName;
     @Setter
-    @ManyToMany(mappedBy = "")
+    @ManyToMany
+    @JoinTable(name = "author_books_rel",
+            joinColumns = @JoinColumn(name = "author_id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id"),
+            foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT),
+            inverseForeignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private Set<Book> writtenBooks;
 
+    public void addWrittenBooks(Book book) {
+        writtenBooks.add(book);
+        book.getAuthors().add(this);
+    }
+    public void removeWrittenBooks(Book book) {
+        book.getAuthors().remove(this);
+        writtenBooks.remove(book);
+    }
 
 }
