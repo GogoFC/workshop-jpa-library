@@ -33,11 +33,41 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         Book java_book = new Book("9781491910771","Head First Java, 3rd Edition");
         Author Kathy_Sierra = new Author("Kathy","Sierra");
-        Kathy_Sierra.addWrittenBooks(java_book);
+
+        Book c_book = new Book("9780131101630","The C Programming Language");
+        Author Dennis = new Author("Dennis","Ritchie");
+
+
+        // Below addAuthor methods don't work!
+
         //java_book.addAuthor(Kathy_Sierra);
+        //c_book.addAuthor(Dennis);
+
+        //c_book.removeAuthor(Dennis);
+
+
+        Dennis.addWrittenBooks(c_book);
+        Kathy_Sierra.addWrittenBooks(java_book);
+
+
 
         bookRepository.save(java_book);
         authorRepository.save(Kathy_Sierra);
+
+        //authorRepository.save(Kathy_Sierra);
+
+       // bookRepository.save(c_book);
+     //   authorRepository.save(Dennis);
+/*
+//below worked before adding Cascade
+        Dennis.removeWrittenBooks(c_book);
+
+        //authorRepository.save(Dennis);
+        bookRepository.save(c_book);
+
+ */
+
+
 
     }
 }

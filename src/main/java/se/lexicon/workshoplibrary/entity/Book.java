@@ -32,7 +32,8 @@ public class Book {
     private int maxLoanDays = 7;
 
     @Setter
-    @ManyToMany(mappedBy = "writtenBooks")
+    @ManyToMany(mappedBy = "writtenBooks",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Author> authors = new HashSet<>();
 
 
@@ -41,6 +42,29 @@ public class Book {
         this.title = title;
     }
 
+    public void addAuthor (Author author) {
+        if (!authors.contains(author)) {
+            authors.add(author);
+        }
+    }
+
+    public void removeAuthor (Author author) {
+        if (authors.contains(author)) {
+            authors.remove(author);
+        }
+    }
+
+    /*
+    // to ask, overrides contains method in interface collection
+    public void addAuthor (Author author) {
+        if (!authors.contains(author)) {
+            authors.add(author);
+        }
+    }
+
+     */
+
+    /* Method for without JoinTable
     public void addAuthor(Author author) {
         authors.add(author);
         author.getWrittenBooks().add(this);
@@ -50,4 +74,6 @@ public class Book {
         author.getWrittenBooks().remove(this);
         authors.remove(author);
     }
+
+     */
 }

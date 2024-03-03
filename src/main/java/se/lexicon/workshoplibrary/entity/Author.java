@@ -23,13 +23,29 @@ public class Author {
 
     @Setter
     private String lastName;
-    @Setter
-    @ManyToMany
+
+    @ManyToMany(cascade =
+            {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name = "author_books_rel",
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))
     private Set<Book> writtenBooks = new HashSet<>();
 
+
+    public void addWrittenBooks (Book book) {
+        if (!writtenBooks.contains(book)) {
+            writtenBooks.add(book);
+        }
+    }
+
+    public void removeWrittenBooks (Book book) {
+        if (writtenBooks.contains(book)) {
+            writtenBooks.remove(book);
+        }
+    }
+
+
+    /* Method for without JoinTable
     public void addWrittenBooks(Book book) {
         writtenBooks.add(book);
         book.getAuthors().add(this);
@@ -38,6 +54,8 @@ public class Author {
         book.getAuthors().remove(this);
         writtenBooks.remove(book);
     }
+
+     */
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
