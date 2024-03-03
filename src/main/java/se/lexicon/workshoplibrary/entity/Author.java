@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import javax.swing.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -27,7 +28,7 @@ public class Author {
     @JoinTable(name = "author_books_rel",
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private Set<Book> writtenBooks;
+    private Set<Book> writtenBooks = new HashSet<>();
 
     public void addWrittenBooks(Book book) {
         writtenBooks.add(book);
@@ -38,4 +39,8 @@ public class Author {
         writtenBooks.remove(book);
     }
 
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 }
