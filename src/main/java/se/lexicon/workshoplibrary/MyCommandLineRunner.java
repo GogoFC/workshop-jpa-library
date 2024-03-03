@@ -38,14 +38,14 @@ public class MyCommandLineRunner implements CommandLineRunner {
         Author Dennis = new Author("Dennis","Ritchie");
 
 
-        // Below addAuthor methods don't work!
 
+        // works
         java_book.addAuthor(Kathy_Sierra);
         c_book.addAuthor(Dennis);
 
         //c_book.removeAuthor(Dennis);
 
-
+        // works
         //Dennis.addWrittenBooks(c_book);
         //Kathy_Sierra.addWrittenBooks(java_book);
 
@@ -55,24 +55,39 @@ public class MyCommandLineRunner implements CommandLineRunner {
         authorRepository.save(Kathy_Sierra);
 
 
-       bookRepository.save(c_book);
-       authorRepository.save(Dennis);
-/*
-//below worked before adding Cascade
+        bookRepository.save(c_book);
+        authorRepository.save(Dennis);
+
+
+        //Below works when Dennis.addWrittenBooks(c_book) above; is used.
+        //Dennis.removeWrittenBooks(c_book);
+        //authorRepository.save(Dennis);
+
+        // Works. Removes Dennis and saves using authorRepository. Can't save using bookRepository.
+        c_book.removeAuthor(Dennis);
+        //bookRepository.save(c_book);
+        authorRepository.save(Dennis);
+
+
+
+
+
+
+
+        //------------------------------------------------------------
+        /*
+        //below worked before adding Cascade
         Dennis.removeWrittenBooks(c_book);
 
         //authorRepository.save(Dennis);
         bookRepository.save(c_book);
 
- */
+        */
         /* doesn't work here
         Dennis.removeWrittenBooks(c_book);
         bookRepository.save(c_book);
 
          */
-        //Below works here. After author is saved, then removed and saved again jpa.
-        Dennis.removeWrittenBooks(c_book);
-        authorRepository.save(Dennis);
 
     }
 }
