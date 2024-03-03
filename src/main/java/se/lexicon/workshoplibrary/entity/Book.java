@@ -31,9 +31,14 @@ public class Book {
     @Column
     private int maxLoanDays = 7;
 
-    @Setter
-    @ManyToMany(mappedBy = "writtenBooks",
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+
+
+
+    @ManyToMany(cascade =
+            {CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinTable(name = "author_books_rel",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
 

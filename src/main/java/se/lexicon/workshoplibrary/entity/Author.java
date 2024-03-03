@@ -24,11 +24,9 @@ public class Author {
     @Setter
     private String lastName;
 
-    @ManyToMany(cascade =
-            {CascadeType.PERSIST,CascadeType.MERGE})
-    @JoinTable(name = "author_books_rel",
-            joinColumns = @JoinColumn(name = "author_id"),
-            inverseJoinColumns = @JoinColumn(name = "book_id"))
+    @Setter
+    @ManyToMany(mappedBy = "authors",
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Book> writtenBooks = new HashSet<>();
 
 

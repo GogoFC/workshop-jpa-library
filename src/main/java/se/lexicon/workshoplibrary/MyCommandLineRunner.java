@@ -65,8 +65,8 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         // Works. Removes Dennis and saves using authorRepository. Can't save using bookRepository.
         c_book.removeAuthor(Dennis);
-        //bookRepository.save(c_book);
-        authorRepository.save(Dennis);
+        bookRepository.save(c_book);
+        ////authorRepository.save(Dennis);
 
 
 
