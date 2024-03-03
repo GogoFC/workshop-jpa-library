@@ -32,20 +32,10 @@ public class Author {
     private Set<Book> writtenBooks = new HashSet<>();
 
 
-    public void addWrittenBooks (Book book) {
-        if (!writtenBooks.contains(book)) {
-            writtenBooks.add(book);
-        }
-    }
-
-    public void removeWrittenBooks (Book book) {
-        if (writtenBooks.contains(book)) {
-            writtenBooks.remove(book);
-        }
-    }
 
 
-    /* Method for without JoinTable
+
+
     public void addWrittenBooks(Book book) {
         writtenBooks.add(book);
         book.getAuthors().add(this);
@@ -55,7 +45,7 @@ public class Author {
         writtenBooks.remove(book);
     }
 
-     */
+
 
     public Author(String firstName, String lastName) {
         this.firstName = firstName;
