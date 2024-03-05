@@ -54,13 +54,16 @@ public class MyCommandLineRunner implements CommandLineRunner {
         bookRepository.save(java_book);
         bookRepository.save(c_book);
 
-        //authorRepository.save(Kathy_Sierra);
+        Kathy_Sierra = authorRepository.save(Kathy_Sierra);
         //stuck here
 
-        authorRepository.save(Kathy_Sierra);
+        //authorRepository.save(Kathy_Sierra);
         Kathy_Sierra.addWrittenBooks(java_book);
         //bookRepository.save(java_book); // Does not add to book_author db
-        authorRepository.save(Kathy_Sierra);
+        Author objectAuthor = authorRepository.save(Kathy_Sierra);
+        //System.out.println(objectAuthor.getWrittenBooks());
+        objectAuthor.getWrittenBooks().forEach(System.out::println);
+
 
         authorRepository.save(Dennis);
         //bookRepository.save(c_book);
@@ -70,7 +73,11 @@ public class MyCommandLineRunner implements CommandLineRunner {
 
         //Works when below is added, but can't use addAuthor Method.
         Dennis.addWrittenBooks(c_book);
-        authorRepository.save(Dennis);
+        c_book.getAuthors().forEach(System.out::println);
+
+
+
+        //authorRepository.save(Dennis);
      //   authorRepository.save(Dennis);
 /*
 //below worked before adding Cascade
